@@ -18,11 +18,16 @@ body{
 header{
     color: rgb(216, 237, 255);
     border-bottom: 1px solid white;
+    padding: 30px 0px;
+    background-color: rgba(255, 255, 255, 0);
+    height: 100vh;
 }
 .header-nav{
     display: flex;
     justify-content: space-between;
-    margin: 30px 60px;
+    padding: 0px 60px 30px 60px;
+    /* margin: 0px 60px; */
+    border-bottom: 1px solid white;
 }
 .header-nav ul {
     display: flex;
