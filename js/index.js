@@ -1,9 +1,39 @@
 // function([string1, string2],target id,[color1,color2])
-consoleText(["Craft++", "create and craft team"], "title", [
-    "rgb(216, 237, 255)",
-]);
 
-function consoleText(words, id, colors) {
+class ChangeTag {
+    constructor(getIdName, addClassName) {
+        this.getIdName = getIdName;
+        this.addClassName = addClassName;
+    }
+
+    addClassToCSS(getIdName, addClassName) {
+        let target = document.getElementById(getIdName);
+        target.classList.add(addClassName);
+    }
+
+    addTextToHTML(addText) {
+        let target = document.getElementById(this.getIdName);
+        target.innerHTML = addText;
+        console.log(target);
+        this.addClassToCSS(this.getIdName, this.addClassName);
+    }
+}
+
+// @todo 非同期処理なんとかする
+const promise = new Promise(function (resolve, reject) {
+    typingText(["Craft++", "create and craft team"], "title", [
+        "rgb(216, 237, 255)",
+    ]);
+});
+
+let fadeText = new ChangeTag("title", "fadeUp");
+console.log(fadeText);
+promise.then(function () {
+    fadeText.addTextToHTML("Craft++");
+});
+//
+
+function typingText(words, id, colors) {
     if (colors === undefined) colors = ["#fff"];
     let letterCount = 1;
     let x = 1;
