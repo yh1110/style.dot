@@ -68,21 +68,31 @@ header{
     margin-right: -50%;
     transform: translate(-50%, -50%);
 }
-.title span{
+#title {
     display: block;
     font-size: 180px;
 }
-.title p{
+#subTitle{
+    display: block;
     font-size: 45px;
+    color: rgba(213, 233, 251, 0.702);
 }
+
 
 .first-view{
     height: 100vh;
 }
 
-.fadeUp{
+.fadeUpTitle{
     animation-name: fadeUpAnime;
     animation-duration: .7s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.fadeUpSubTitle{
+    animation-name: fadeUpAnime;
+    animation-duration: 1.2s;
     animation-fill-mode: forwards;
     opacity: 0;
 }
