@@ -1,11 +1,10 @@
-// function([string1, string2],target id,[color1,color2])
-
 class ChangeTag {
     constructor(getIdName, addClassName) {
         this.getIdName = getIdName;
         this.addClassName = addClassName;
     }
 
+    //できればプライベートにしたい
     addClassToCSS(getIdName, addClassName) {
         let target = document.getElementById(getIdName);
         target.classList.add(addClassName);
@@ -14,26 +13,12 @@ class ChangeTag {
     addTextToHTML(addText) {
         let target = document.getElementById(this.getIdName);
         target.innerHTML = addText;
-        console.log(target);
         this.addClassToCSS(this.getIdName, this.addClassName);
     }
 }
 
-// @todo 非同期処理なんとかする
-const promise = new Promise(function (resolve, reject) {
-    typingText(["Craft++", "create and craft team"], "title", [
-        "rgb(216, 237, 255)",
-    ]);
-});
-
-let fadeText = new ChangeTag("title", "fadeUp");
-console.log(fadeText);
-promise.then(function () {
-    fadeText.addTextToHTML("Craft++");
-});
-//
-
-function typingText(words, id, colors) {
+// function([string1, string2],target id,[color1,color2], resolve or reject)
+function typingText(words, id, colors, resolve) {
     if (colors === undefined) colors = ["#fff"];
     let letterCount = 1;
     let x = 1;
@@ -68,6 +53,7 @@ function typingText(words, id, colors) {
                     } else {
                         //停止
                         clearInterval(timerId);
+                        resolve();
                     }
 
                     letterCount += x;
@@ -93,3 +79,25 @@ function typingText(words, id, colors) {
         }, 95);
     }, 500);
 }
+
+// タイトルが書きこまれていく
+const titleAnimation = new Promise(function (resolve, reject) {
+    typingText(
+        ["Craft++", "create and craft team"],
+        "title",
+        ["rgb(216, 237, 255)"],
+        resolve
+    );
+});
+
+let fadeTitle = new ChangeTag("title", "fadeUpTitle");
+let fadeSubTitle = new ChangeTag("subTitle", "fadeUpSubTitle");
+
+//タイトルがフェードインする
+titleAnimation.then(() => {
+    fadeTitle.addTextToHTML("Craft++");
+    fadeSubTitle.addTextToHTML("create and craft team");
+});
+//
+
+//スクロールしたら画面が移り変わる処理の記述

@@ -71,36 +71,44 @@ header{
     margin-right: -50%;
     transform: translate(-50%, -50%);
 }
-.title span{
+#title {
     display: block;
     font-size: 180px;
 }
-.title p{
+#subTitle{
+    display: block;
     font-size: 45px;
+    color: rgba(213, 233, 251, 0.702);
 }
+
 
 .first-view{
     height: 100vh;
 }
 
-/* @todo */
-.fadeUp{
+.fadeUpTitle{
     animation-name: fadeUpAnime;
-    animation-duration: 1s;
+    animation-duration: .7s;
     animation-fill-mode: forwards;
     opacity: 0;
 }
 
-/* @todo */
+.fadeUpSubTitle{
+    animation-name: fadeUpAnime;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
 @keyframes fadeUpAnime{
     from{
         opacity: 0;
-        transform: translate(100px);
+        transform: translateY(30px);
     }
     
     to{
         opacity: 1;
-        transform: translate(0);
+        transform: translateY(0);
     }
 }
 
