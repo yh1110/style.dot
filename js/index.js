@@ -81,7 +81,7 @@ function typingText(words, id, colors, resolve) {
 }
 
 // タイトルが書きこまれていく
-const titleAnimation = new Promise(function (resolve, reject) {
+const titleAnimation = new Promise(function (resolve) {
     typingText(
         ["Craft++", "create and craft team"],
         "title",
